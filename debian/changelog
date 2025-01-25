@@ -1,0 +1,5 @@
+node-queue-lit (3.0.0-1) UNRELEASED; urgency=medium
+
+  * Initial packaging.
+
+ -- s0600204 <dev@s0600204>  Sat, 25 Jan 2025 22:20:00 +0000

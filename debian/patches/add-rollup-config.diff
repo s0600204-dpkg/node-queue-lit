@@ -1,0 +1,42 @@
+diff --git a/rollup.config.cjs b/rollup.config.cjs
+new file mode 100644
+index 0000000..750d280
+--- /dev/null
++++ b/rollup.config.cjs
+@@ -0,0 +1,17 @@
++const resolve = require('@rollup/plugin-node-resolve');
++const typescript = require('@rollup/plugin-typescript');
++
++const exportConfig = {
++  plugins: [
++    resolve({
++      modulePaths: ['/usr/share/nodejs']
++    }),
++    typescript(),
++  ],
++  input: 'src/index.ts',
++};
++
++module.exports = [
++  {...exportConfig, output: {file: 'dist/index.cjs', format: 'cjs'}},
++  {...exportConfig, output: {file: 'dist/index.js', format: 'es'}},
++];
+diff --git a/tsconfig.json b/tsconfig.json
+index aea1119..3d80e30 100644
+--- a/tsconfig.json
++++ b/tsconfig.json
+@@ -6,12 +6,11 @@
+     "lib": ["ES2020", "DOM", "DOM.Iterable"],
+     "skipLibCheck": true,
+ 
+-    /* Bundler mode */
+-    "moduleResolution": "Bundler",
+-    "allowImportingTsExtensions": true,
+     "resolveJsonModule": true,
+     "isolatedModules": true,
+     "noEmit": true,
++    "declaration": true,
++    "outDir": "dist",
+ 
+     /* Linting */
+     "strict": true,
